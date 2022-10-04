@@ -1,0 +1,1 @@
+from covid_classifier.components.data_ingestion import DataIngestion

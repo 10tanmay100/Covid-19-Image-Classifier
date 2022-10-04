@@ -1,0 +1,9 @@
+artifacts_root: artifacts
+
+data_ingestion:
+  root_dir: artifacts/data_ingestion
+  source_URL: https://www.kaggle.com/datasets/pranavraikokte/covid19-image-dataset
+  local_data_file: artifacts/data_ingestion/Covid19-dataset
+  local_data_file_train: artifacts/data_ingestion/Covid19-dataset/train
+  local_data_file_test: artifacts/data_ingestion/Covid19-dataset/test
+  

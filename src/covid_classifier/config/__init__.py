@@ -1,0 +1,1 @@
+from covid_classifier.config.configuration import ConfigurationManager
