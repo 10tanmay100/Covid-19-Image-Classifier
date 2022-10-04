@@ -1,1 +1,1 @@
-from covid_classifier.entity.config_entity import DataIngestionConfig
+from covid_classifier.entity.config_entity import *

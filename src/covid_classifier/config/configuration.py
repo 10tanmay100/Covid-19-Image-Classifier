@@ -1,3 +1,4 @@
+from logging import root
 from covid_classifier.constants import *
 from covid_classifier.entity import *
 from covid_classifier.utils import *
@@ -16,6 +17,14 @@ class ConfigurationManager:
         data_ingestion_config= DataIngestionConfig(root_dir=config.root_dir,source_URL=config.source_URL,local_data_file=config.local_data_file,local_data_file_train=config.local_data_file_train,local_data_file_test=config.local_data_file_test)
         
         return data_ingestion_config
+    
+    def get_data_validation_config(self):
+        config=self.config_path.data_validation
+        create_directories([config.root_dir])
+        logger.info("{config.root_dir} directory created!!")
+        data_validation_config=DataValidationConfig(
+            root_dir=config.root_dir,validated_local_data_file=config.local_data_file,validated_local_data_file_train=config.validated_local_data_file_train,validated_local_data_file_test=config.validated_local_data_file_test
+        )
         
 
 
