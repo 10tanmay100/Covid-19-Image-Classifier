@@ -1,0 +1,15 @@
+data_ingestion:
+  name: data_ingestion
+  date: 12/2/2022
+
+data_validation:
+  name: data_validation
+  date: 12/3/2022
+
+model_training_:
+  name: model_training_
+  date: 12/4/2022
+
+model_evaluation:
+  name: data_ingestion
+  date: 12/5/2022
