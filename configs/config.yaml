@@ -1,11 +1,22 @@
 artifacts_root: artifacts
 
+validated_file:
+  number_of_folders: 2
+  number_of_folders_train: 3
+  number_of_folders_test: 3
+  number_of_covid_files_train: 111
+  number_of_normal_files_train: 70
+  number_of_Viral_Pneumonia_files_train: 70
+  number_of_covid_files_test: 26
+  number_of_normal_files_test: 20
+  number_of_Viral_Pneumonia_files_test: 20 
+
 data_ingestion:
   root_dir: artifacts/data_ingestion
   source_URL: https://www.kaggle.com/datasets/pranavraikokte/covid19-image-dataset
-  local_data_file: artifacts/data_ingestion/Covid19-dataset
-  local_data_file_train: artifacts/data_ingestion/Covid19-dataset/train
-  local_data_file_test: artifacts/data_ingestion/Covid19-dataset/test
+  local_data_file: artifacts/data_ingestion/
+  local_data_file_train: artifacts/data_ingestion/covid19-image-dataset/Covid19-dataset/train
+  local_data_file_test: artifacts/data_ingestion/covid19-image-dataset/Covid19-dataset/test
   
 data_validation:
   root_dir: artifacts/data_validation

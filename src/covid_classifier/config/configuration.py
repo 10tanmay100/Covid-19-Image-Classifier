@@ -23,8 +23,9 @@ class ConfigurationManager:
         create_directories([config.root_dir])
         logger.info("{config.root_dir} directory created!!")
         data_validation_config=DataValidationConfig(
-            root_dir=config.root_dir,validated_local_data_file=config.local_data_file,validated_local_data_file_train=config.validated_local_data_file_train,validated_local_data_file_test=config.validated_local_data_file_test
+            root_dir=config.root_dir,validated_local_data_file=config.validated_local_data_file,validated_local_data_file_train=config.validated_local_data_file_train,validated_local_data_file_test=config.validated_local_data_file_test
         )
+        return data_validation_config
         
 
 

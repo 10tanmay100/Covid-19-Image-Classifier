@@ -105,7 +105,7 @@ def load_bin(path: Path) -> Any:
     return data
 
 @ensure_annotations
-def get_size(path: Path) -> str:
+def get_size(path: Path) -> int:
     """get size in KB
 
     Args:
@@ -114,5 +114,5 @@ def get_size(path: Path) -> str:
     Returns:
         str: size in KB
     """
-    size_in_kb = round(os.path.getsize(path)/1024)
-    return f"~ {size_in_kb} KB"
+    size_in_kb = int(round(os.path.getsize(path)/1024))
+    return size_in_kb

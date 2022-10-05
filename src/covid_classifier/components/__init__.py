@@ -1,1 +1,2 @@
 from covid_classifier.components.data_ingestion import DataIngestion
+from covid_classifier.components.data_validation import DataValidation
