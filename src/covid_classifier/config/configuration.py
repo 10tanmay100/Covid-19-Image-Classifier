@@ -26,6 +26,15 @@ class ConfigurationManager:
             root_dir=config.root_dir,validated_local_data_file=config.validated_local_data_file,validated_local_data_file_train=config.validated_local_data_file_train,validated_local_data_file_test=config.validated_local_data_file_test
         )
         return data_validation_config
+    def get_prepare_base_model_config(self):
+        config=self.config_path.prepare_base_model
+        create_directories([config.root_dir])
+        logger.info(f"{config.root_dir} directory created")
+        prepare_base_model_config=PrepareBaseModelConfig(
+            root_dir=config.root_dir,base_model_path=config.base_model_path,updated_base_model_path=config.updated_base_model_path,params_image_size=self.params_path.IMAGE_SIZE,params_include_top=self.params_path.INCLUDE_TOP,params_weights=self.params_path.WEIGHTS,params_learning_rate=self.params_path.LEARNING_RATE,params_classes=self.params_path.CLASSES
+        )
+        return prepare_base_model_config
+        
         
 
 

@@ -129,3 +129,4 @@ dmypy.json
 .pyre/
 artifacts/data_ingestion/*
 artifacts/data_validation/*
+artifacts/prepare_base_model/*
