@@ -1,0 +1,72 @@
+schema: '2.0'
+stages:
+  data_ingestion:
+    cmd: python src/covid_classifier/pipeline/stage_01_data_ingestion.py
+    deps:
+    - path: configs/config.yaml
+      md5: a26d78d45b97103153c7f607fe80e67e
+      size: 1626
+    - path: src/covid_classifier/pipeline/stage_01_data_ingestion.py
+      md5: 4c86672a90e88144703aed2fe7fd82a3
+      size: 661
+    outs:
+    - path: artifacts/data_ingestion/covid19-image-dataset/Covid19-dataset
+      md5: 8df6b8657cc9ed0c906cb3d295bdc732.dir
+      size: 169642021
+      nfiles: 317
+  prepare_base_model:
+    cmd: python src/covid_classifier/pipeline/stage_03_prepare_base_model.py
+    deps:
+    - path: configs/config.yaml
+      md5: a26d78d45b97103153c7f607fe80e67e
+      size: 1626
+    - path: src/covid_classifier/pipeline/stage_03_prepare_base_model.py
+      md5: 15e1c2b7675ee2cfb14125f3bccf94fe
+      size: 707
+    params:
+      params.yaml:
+        CLASSES: 3
+        IMAGE_SIZE:
+        - 224
+        - 224
+        INCLUDE_TOP: false
+        LEARNING_RATE: 0.01
+        WEIGHTS: imagenet
+    outs:
+    - path: artifacts/prepare_base_model
+      md5: ae946aa9d4d5069c49c682157a60cfba.dir
+      size: 118153720
+      nfiles: 2
+  training:
+    cmd: python src/covid_classifier/pipeline/stage_04_training.py
+    deps:
+    - path: artifacts/data_ingestion/covid19-image-dataset/Covid19-dataset
+      md5: 8df6b8657cc9ed0c906cb3d295bdc732.dir
+      size: 169642021
+      nfiles: 317
+    - path: artifacts/prepare_base_model
+      md5: ae946aa9d4d5069c49c682157a60cfba.dir
+      size: 118153720
+      nfiles: 2
+    - path: configs/config.yaml
+      md5: a26d78d45b97103153c7f607fe80e67e
+      size: 1626
+    - path: src/covid_classifier/pipeline/stage_04_training.py
+      md5: a0f4863a3a7ea378940ebbf3ac8d958e
+      size: 1131
+    params:
+      params.yaml:
+        CLASSES: 3
+        IMAGE_SIZE:
+        - 224
+        - 224
+        INCLUDE_TOP: false
+        LEARNING_RATE: 0.01
+        WEIGHTS: imagenet
+    outs:
+    - path: artifacts/model_training/model.h5
+      md5: ce3578a341fe42cf4ad0db8eeebf5e4e
+      size: 59842048
+    - path: artifacts/model_training/score.txt
+      md5: 4e8ed464383de836f7bbaf825af34b5b
+      size: 60

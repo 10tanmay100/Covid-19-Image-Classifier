@@ -130,3 +130,5 @@ dmypy.json
 artifacts/data_ingestion/*
 artifacts/data_validation/*
 artifacts/prepare_base_model/*
+artifacts/model_training/*
+artifacts/prepare_callbacks/*

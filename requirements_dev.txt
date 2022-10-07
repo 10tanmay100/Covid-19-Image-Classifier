@@ -17,6 +17,8 @@ tensorflow-gpu
 mlflow==1.26.1
 streamlit
 opendatasets
+streamlit
+gunicorn
 -e .
 
 

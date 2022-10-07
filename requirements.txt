@@ -1,4 +1,4 @@
-tensorflow==2.2.0.0
+tensorflow
 dvc
 pandas
 notebook
@@ -13,8 +13,9 @@ joblib
 types-PyYAML
 types-requests
 scipy
-tensorflow-gpu
-mlflow==1.26.1
-streamlit
+# tensorflow-gpu
+# mlflow==1.26.1
 opendatasets
+streamlit
+gunicorn
 -e .

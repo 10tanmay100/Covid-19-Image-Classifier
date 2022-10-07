@@ -1,4 +1,5 @@
 from logging import root
+from venv import create
 from covid_classifier.constants import *
 from covid_classifier.entity import *
 from covid_classifier.utils import *
@@ -35,6 +36,40 @@ class ConfigurationManager:
         )
         return prepare_base_model_config
         
+    def get_prepare_callbacks_config(self):
+        config=self.config_path.prepare_callbacks
+        create_directories([config.root_dir])
+        logger.info(f"Prepare callbacks directory created")
+        prepare_callbacks_config=PrepareCallbacksConfig(
+            root_dir=config.root_dir,tensorboard_root_log_dir=
+            config.tensorboard_root_log_dir,checkpoint_model_filepath=config.checkpoint_model_file_path
+        )
+        return prepare_callbacks_config
+    def get_training_config(self,data_validation_config) -> ModelTrainerConfig:
+        training = self.config_path.model_training
+        prepare_base_model = self.config_path.prepare_base_model
+        params = self.params_path
+        training_data = data_validation_config.validated_local_data_file_train
+        testing_data=data_validation_config.validated_local_data_file_test
+        create_directories([
+            Path(training.root_dir)
+        ])
+
+        training_config = ModelTrainerConfig(
+            root_dir=Path(training.root_dir),
+            trained_model_path=Path(training.model_path),
+            updated_base_model_path=Path(prepare_base_model.updated_base_model_path),
+            training_data=Path(training_data),
+            testing_data=Path(testing_data),
+            params_epochs=params.EPOCHS,
+            params_TRAINING_batch_size=params.TRAINING_BATCH_SIZE,
+            params_TESTING_batch_size=params.TESTING_BATCH_SIZE,
+            params_is_augmentation=params.AUGMENTATION,
+            params_image_size=params.IMAGE_SIZE,
+            params_target_size=params.TARGET_SIZE
+        )
+
+        return training_config
         
 
 

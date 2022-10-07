@@ -1,3 +1,5 @@
 from covid_classifier.components.data_ingestion import DataIngestion
 from covid_classifier.components.data_validation import DataValidation
 from covid_classifier.components.prepare_base_model import PrepareBaseModel
+from covid_classifier.components.prepare_callbacks import PrepareCallback
+from covid_classifier.components.model_trainer import Training
