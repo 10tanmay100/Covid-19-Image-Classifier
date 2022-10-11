@@ -13,7 +13,7 @@ joblib
 types-PyYAML
 types-requests
 scipy
-tensorflow-gpu
+#tensorflow-gpu
 mlflow==1.26.1
 streamlit
 opendatasets
