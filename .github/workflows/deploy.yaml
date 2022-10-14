@@ -23,7 +23,7 @@ jobs:
           aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
           application_name: Feverclassifier
           environment_name: Feverclassifier-env
-          existing_bucket_name: elasticbeanstalk-us-east-1-315865595366
+          existing_bucket_name: elasticbeanstalk-us-east-1-965993757243
 
           region: us-east-1
           version_label: ${{ github.sha }}
