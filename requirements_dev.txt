@@ -19,6 +19,8 @@ streamlit
 opendatasets
 streamlit
 gunicorn
+flask
+flask-cors
 -e .
 
 

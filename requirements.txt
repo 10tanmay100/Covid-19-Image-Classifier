@@ -13,6 +13,8 @@ joblib
 types-PyYAML
 types-requests
 scipy
+flask
+flask-cors
 # tensorflow-gpu
 # mlflow==1.26.1
 opendatasets
