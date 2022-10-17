@@ -7,6 +7,15 @@ stages:
     outs:
     - artifacts/data_ingestion/covid19-image-dataset/Covid19-dataset
 
+  data_validation:
+    cmd: python src/covid_classifier/pipeline/stage_02_data_validation.py
+    deps:
+    - src/covid_classifier/pipeline/stage_01_data_ingestion.py
+    - src/covid_classifier/pipeline/stage_02_data_validation.py
+    - configs/config.yaml
+    outs:
+    - artifacts/data_validation/Covid19-dataset
+
   prepare_base_model:
     cmd: python src/covid_classifier/pipeline/stage_03_prepare_base_model.py
     deps:

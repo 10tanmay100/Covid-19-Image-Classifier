@@ -34,8 +34,8 @@ stages:
         WEIGHTS: imagenet
     outs:
     - path: artifacts/prepare_base_model
-      md5: ae946aa9d4d5069c49c682157a60cfba.dir
-      size: 118153720
+      md5: d0863ff671c410482203bf6cccfe5985.dir
+      size: 118154488
       nfiles: 2
   training:
     cmd: python src/covid_classifier/pipeline/stage_04_training.py
@@ -45,8 +45,8 @@ stages:
       size: 169642021
       nfiles: 317
     - path: artifacts/prepare_base_model
-      md5: ae946aa9d4d5069c49c682157a60cfba.dir
-      size: 118153720
+      md5: d0863ff671c410482203bf6cccfe5985.dir
+      size: 118154488
       nfiles: 2
     - path: configs/config.yaml
       md5: a26d78d45b97103153c7f607fe80e67e
@@ -65,8 +65,25 @@ stages:
         WEIGHTS: imagenet
     outs:
     - path: artifacts/model_training/model.h5
-      md5: ce3578a341fe42cf4ad0db8eeebf5e4e
-      size: 59842048
+      md5: 8fbdc6f10bf776ee2cf3ba79aba1de5f
+      size: 59842568
     - path: artifacts/model_training/score.txt
-      md5: 4e8ed464383de836f7bbaf825af34b5b
+      md5: 71be0ceb4afdc4079a5a558f2c5c8842
       size: 60
+  data_validation:
+    cmd: python src/covid_classifier/pipeline/stage_02_data_validation.py
+    deps:
+    - path: configs/config.yaml
+      md5: a26d78d45b97103153c7f607fe80e67e
+      size: 1626
+    - path: src/covid_classifier/pipeline/stage_01_data_ingestion.py
+      md5: 4c86672a90e88144703aed2fe7fd82a3
+      size: 661
+    - path: src/covid_classifier/pipeline/stage_02_data_validation.py
+      md5: 1753b954f87021cd9238ecf86ea960a6
+      size: 796
+    outs:
+    - path: artifacts/data_validation/Covid19-dataset
+      md5: 8df6b8657cc9ed0c906cb3d295bdc732.dir
+      size: 169642021
+      nfiles: 317
