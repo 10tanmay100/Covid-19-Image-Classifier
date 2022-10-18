@@ -8,10 +8,10 @@ import glob
 class Test_data_ingestion:
     data_ingestion_config=DataIngestionConfig(
         root_dir='tests/data/Sample_data/',
-        source_URL='https://raw.githubusercontent.com/10tanmay100/data_for_target_Sales/main/test_sample_data.zip',
-        local_data_file='tests/data/Sample_data/sample_data.zip',
-        local_data_file_train='tests/data/Sample_data/train',
-        local_data_file_test='tests/data/Sample_data/test'
+        source_URL='https://www.kaggle.com/datasets/pranavraikokte/covid19-image-dataset',
+        local_data_file='tests/data/Sample_data/',
+        local_data_file_train='tests/data/Sample_data/covid19-image-dataset/Covid19-dataset/train',
+        local_data_file_test='tests/data/Sample_data/covid19-image-dataset/Covid19-dataset/test'
     )
     def test_dwld(self):
         data_ingestion=DataIngestion(config=self.data_ingestion_config)

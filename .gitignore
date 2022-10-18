@@ -132,3 +132,5 @@ artifacts/data_validation/*
 artifacts/prepare_base_model/*
 artifacts/model_training/*
 artifacts/prepare_callbacks/*
+tests/data/Sample_data/*
+tests/data/Sample_validation/*

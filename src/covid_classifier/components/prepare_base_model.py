@@ -30,10 +30,11 @@ from glob import glob
 
 
 class PrepareBaseModel:
-    def __init__(self,config:PrepareBaseModelConfig):
+    def __init__(self,config:PrepareBaseModelConfig,validation_path:DataValidationConfig):
         self.config_file_path=read_yaml(CONFIG_FILE_PATH)
         self.params_file_path=read_yaml(PARAMS_FILE_PATH)
-        self.validated_file_path=DataValidationConfig
+        validation_path=DataValidationConfig
+        self.validated_file_path=validation_path
         self.config=config
         
     def get_base_model(self):
