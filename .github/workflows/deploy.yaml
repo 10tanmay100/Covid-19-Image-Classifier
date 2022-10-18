@@ -1,30 +1,33 @@
-# name: Deployment From Github To AWS
-# on:
-#   push:
-#     branches:
-#       - main
+name: CV application
 
-# jobs:
-#   build:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@v2
-#       - run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-#       # - run: docker-compose -f docker-compose-dev.yaml up
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
+permissions:
+  contents: read
 
-#       - name: Generate deployment package
-#         run: zip -r deploy.zip . -x '*.git*'
+jobs:
+  build:
 
-#       - name: Deploy to EB
-#         uses: einaregilsson/beanstalk-deploy@v18
-#         with:
-#           aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
-#           aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
-#           application_name: Feverclassifier
-#           environment_name: Feverclassifier-env
-#           existing_bucket_name: elasticbeanstalk-us-east-1-965993757243
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest] 
+        python-version: ["3.8"]
 
-#           region: us-east-1
-#           version_label: ${{ github.sha }}
-#           deployment_package: deploy.zip
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v3
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install flake8 pytest tox tox-gh-actions
+        pip install -r requirements.txt
+    - name: Test with tox
+      run: tox
